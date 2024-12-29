@@ -1,0 +1,42 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+# Build output
+dist/
+build/
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock
+
+# Environment settings
+.env
+.env.local
+.env.*.local
+
+# IDE and editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS system files
+.DS_Store
+
+# Git-related files
+.git/
+
+# Miscellaneous
+*.bak
+*.tmp
+*.temp
+*.log

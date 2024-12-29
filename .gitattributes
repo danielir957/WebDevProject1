@@ -1,2 +1,16 @@
-# Auto detect text files and perform LF normalization
+# Auto detect text files and normalize line endings
 * text=auto
+
+# Treat images as binary to avoid diffs
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+
+# Handle minified JavaScript and CSS
+*.min.js diff
+*.min.css diff
+
+# Custom diff and merge behavior for JSON files
+*.json merge=union
