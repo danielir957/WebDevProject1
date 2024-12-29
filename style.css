@@ -1,0 +1,102 @@
+.body {
+  background-image: url("NeonBackground.jpg");
+  background-size: cover;
+  background-position: center;
+  background-color: #bfbfbf;
+  display: grid;
+  place-items: center;
+  margin: 0;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.timer {
+  color: white;
+  font-size: 1.5rem;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.containerA {
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  position: fixed;
+}
+
+.NewGameButton {
+  top: 10px;
+}
+
+.GameRulesButton {
+  top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: white;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: lightgray;
+}
+
+.containerB {
+  border-color: orange;
+  border-style: solid;
+  border-width: 5px;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: orange;
+}
+
+.tic-tac-toe {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7efb51;
+  border: 2px solid black;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-user-select: none;  /* Safari */
+  -moz-user-select: none;     /* Firefox */
+  -ms-user-select: none;      /* IE10+/Edge */
+  user-select: none;          /* Standard */
+}
+
+.cell:hover {
+  background-color: yellowgreen;
+}
+
+.cell.x {
+  background-image: url("cell_x.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.cell.o {
+  background-image: url("cell_o.png");
+  background-size: cover;
+  background-position: center;
+}
