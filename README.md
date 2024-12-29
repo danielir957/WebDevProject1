@@ -31,13 +31,16 @@ The game is built using:
 
 ### File Structure
 ```
-├── index.html
-├── style.css
-├── script.js
+├── .gitignore
+├── .gitattributes
+├── .replit
 ├── NeonBackground.jpg
-├── cell_x.png
+├── README.md
 ├── cell_o.png
-└── README.md
+├── cell_x.png
+├── index.html
+├── script.js
+└── style.css
 ```
 
 ## Installation
