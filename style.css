@@ -1,39 +1,92 @@
-.body {
-  background-image: url("NeonBackground.jpg");
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-image: url("images/NeonBackground.jpg");
   background-size: cover;
   background-position: center;
-  background-color: #bfbfbf;
-  display: grid;
-  place-items: center;
-  margin: 0;
-}
-
-h1 {
-  color: white;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.timer {
-  color: white;
-  font-size: 1.5rem;
-  margin: 10px 0;
-  text-align: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .containerA {
   border-color: black;
   border-style: solid;
   border-width: 2px;
-  position: fixed;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90%;
+  margin: 20px;
 }
 
-.NewGameButton {
-  top: 10px;
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
 }
 
-.GameRulesButton {
-  top: 10px;
+h1 {
+  color: white;
+  text-align: center;
+  margin: 0 0 20px 0;
+  font-size: 2rem;
+  padding: 0 20px;
+}
+
+.developers {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.timer {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.turn-indicator {
+  color: white;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.turn-indicator.player-x {
+  color: black;
+  background-color: red;
+}
+
+.turn-indicator.player-o {
+  color: black;
+  background-color: cyan;
+}
+
+.turn-indicator.tie {
+  color: white;
+  background-color: black;
+}
+
+.NewGameButton, .GameRulesButton {
+  margin: 10px 0;
 }
 
 button {
@@ -42,6 +95,7 @@ button {
   background-color: white;
   border: 2px solid black;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 button:hover {
@@ -59,6 +113,8 @@ button:hover {
   align-items: center;
   position: relative;
   background-color: orange;
+  border-radius: 10px;
+  margin: 20px 0;
 }
 
 .tic-tac-toe {
@@ -79,10 +135,11 @@ button:hover {
   font-size: 2.5rem;
   font-weight: bold;
   cursor: pointer;
-  -webkit-user-select: none;  /* Safari */
-  -moz-user-select: none;     /* Firefox */
-  -ms-user-select: none;      /* IE10+/Edge */
-  user-select: none;          /* Standard */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 5px;
 }
 
 .cell:hover {
@@ -90,13 +147,13 @@ button:hover {
 }
 
 .cell.x {
-  background-image: url("cell_x.png");
+  background-image: url("images/cell_x.png");
   background-size: cover;
   background-position: center;
 }
 
 .cell.o {
-  background-image: url("cell_o.png");
+  background-image: url("images/cell_o.png");
   background-size: cover;
   background-position: center;
 }
