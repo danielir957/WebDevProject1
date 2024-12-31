@@ -1,24 +1,39 @@
 // Game state variables
 let board = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
-let gameActive = false;  // Changed to false by default
+let gameActive = false;
 let timeLeft = 30;
 let timerId = null;
 let timerDisplay = null;
+let turnIndicator = null;
 
-// Initialize timer display
-function initializeTimerDisplay() {
-    // Remove existing timer if any
+// Initialize displays
+function initializeDisplays() {
+    // Initialize timer display
     const existingTimer = document.querySelector('.timer');
     if (existingTimer) {
         existingTimer.remove();
     }
     
-    // Create new timer display
     timerDisplay = document.createElement('div');
     timerDisplay.className = 'timer';
     document.querySelector('.body').insertBefore(timerDisplay, document.querySelector('.containerB'));
     timerDisplay.textContent = 'Click on \'Start Game\' to start!';
+    
+    // Initialize turn indicator
+    turnIndicator = document.getElementById('turn-indicator');
+    updateTurnIndicator();
+}
+
+// Update turn indicator
+function updateTurnIndicator() {
+    if (!gameActive) {
+        turnIndicator.textContent = 'Click on \'Start Game\' to start!';
+        turnIndicator.className = 'turn-indicator';
+    } else {
+        turnIndicator.textContent = `Player ${currentPlayer}'s Turn`;
+        turnIndicator.className = `turn-indicator player-${currentPlayer.toLowerCase()}`;
+    }
 }
 
 // Timer function
@@ -55,13 +70,15 @@ function handleCellClick(cellIndex) {
     
     board[cellIndex] = currentPlayer;
     const cell = document.getElementById(`cell-${cellIndex}`);
-    cell.classList.add(currentPlayer === 'X' ? 'x' : 'o');
+    cell.classList.add(currentPlayer.toLowerCase());
     
     if (checkWinner()) {
         clearInterval(timerId);
         if (timerDisplay) {
             timerDisplay.textContent = `Player ${currentPlayer} wins!`;
         }
+        turnIndicator.textContent = `Player ${currentPlayer} wins!`;
+        turnIndicator.className = `turn-indicator player-${currentPlayer.toLowerCase()}`;
         alert(`Player ${currentPlayer} wins!`);
         gameActive = false;
         return;
@@ -72,13 +89,16 @@ function handleCellClick(cellIndex) {
         if (timerDisplay) {
             timerDisplay.textContent = "It's a tie!";
         }
+        turnIndicator.textContent = "It's a tie!";
+        turnIndicator.className = 'turn-indicator tie';
         alert("It's a tie!");
         gameActive = false;
         return;
     }
     
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    startTimer(); // Reset timer for next player
+    updateTurnIndicator();
+    startTimer();
 }
 
 // Check for a winner
@@ -108,16 +128,18 @@ function resetGame() {
     if (timerDisplay) {
         timerDisplay.textContent = 'Click on \'Start Game\' to start!';
     }
+    updateTurnIndicator();
 }
 
 // Start a new game
 function startGame() {
     resetGame();
     gameActive = true;
+    updateTurnIndicator();
     startTimer();
 }
 
-// Show game rules - Removed the gameActive check
+// Show game rules
 function GameRules() {
     alert("Game Rules:\n\n1. The game is played on a 3x3 grid.\n2. Players take turns placing their marks (X or O).\n3. Each player has 30 seconds to make their move.\n4. If a player doesn't move within 30 seconds, they lose automatically.\n5. The first player to align three marks in a row, column, or diagonal wins.\n6. If all cells are filled and no player wins, it's a tie.");
 }
@@ -128,4 +150,4 @@ document.querySelectorAll('.cell').forEach((cell, index) => {
 });
 
 // Initialize the game
-initializeTimerDisplay();
+initializeDisplays();
